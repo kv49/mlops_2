@@ -2,5 +2,13 @@
   tasks:
   - name: Copy flask app file to the mlops-prod server
     copy:
-      remote_src: /home/jenkins/Titanic/scripts/production/app.py
-      dest: /home/user02/Titanic/scripts/production/app.py
+      src: /var/lib/jenkins/workspace/Titanic/scripts/production/app.py
+      dest: /home/jenkins/Titanic/scripts/production/app.py
+  - name: Installing flask module
+    pip:
+      executable: pip3
+      name: flask
+      state: latest
+  - name: run flask app
+    shell:
+      nohup python3 /home/jenkins/Titanic/scripts/production/app.py > log.txt 2>&1

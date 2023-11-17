@@ -11,4 +11,4 @@
       state: latest
   - name: run flask app
     shell:
-      nohup python3 /home/jenkins/Titanic/scripts/production/app.py > log.txt 2>&1
+      nohup python3 /home/jenkins/Titanic/scripts/production/app.py > log.txt 2>&1 &
